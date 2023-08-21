@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
 
 function App() {
+  const [input, setInput] = useState("");
+  const [code, setCode] = useState("");
+
+  const handleChange = (event: any) => {
+    setInput(event.target.value);
+  };
+
+  const onChange = () => {
+    setCode(input);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div>
+      <main>
+        <textarea
+          name=""
+          id=""
+          cols={30}
+          rows={10}
+          onChange={handleChange}
+          value={input}
         >
-          Learn React
-        </a>
-      </header>
+          Type here...
+        </textarea>
+
+        <div>
+          <button onClick={onChange}>Submit</button>
+        </div>
+
+        <pre>{code}</pre>
+      </main>
     </div>
   );
 }
